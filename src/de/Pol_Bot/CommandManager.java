@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import de.Pol_Bot.Commands.HelpCommand;
 import de.Pol_Bot.Commands.PingCommand;
 import de.Pol_Bot.Commands.ServerCommand;
+import de.Pol_Bot.Commands.StaffHelp;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -19,6 +20,7 @@ public class CommandManager
 		
 		this.commands.put("ping", new PingCommand());
 		this.commands.put("help", new HelpCommand());
+		this.commands.put("staffhelp", new StaffHelp());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann
