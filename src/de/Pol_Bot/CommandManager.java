@@ -2,7 +2,10 @@ package de.Pol_Bot;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+import de.Pol_Bot.Commands.BanCommand;
+import de.Pol_Bot.Commands.ClearCommand;
 import de.Pol_Bot.Commands.HelpCommand;
+import de.Pol_Bot.Commands.KickCommand;
 import de.Pol_Bot.Commands.PingCommand;
 import de.Pol_Bot.Commands.ServerCommand;
 import de.Pol_Bot.Commands.StaffHelp;
@@ -21,6 +24,9 @@ public class CommandManager
 		this.commands.put("ping", new PingCommand());
 		this.commands.put("help", new HelpCommand());
 		this.commands.put("staffhelp", new StaffHelp());
+		this.commands.put("ban", new BanCommand());
+		this.commands.put("kick", new KickCommand());
+		this.commands.put("clear", new ClearCommand());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann

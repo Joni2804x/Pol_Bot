@@ -11,16 +11,22 @@ public class WordListener extends ListenerAdapter
 	{
 		Message message = event.getMessage();
 		String m = message.getContentDisplay();
-		Emote emote = message.getGuild().getEmoteById("825777383914864712");
+		Emote emote1 = message.getGuild().getEmoteById("825777383914864712");
+		Emote emote2 = message.getGuild().getEmoteById("813546229710979113");
 
 		if(m.contains("nigger") || m.contains("Nigger"))
 		{
-			message.addReaction(emote).queue();
+			message.addReaction(emote1).queue();
 		}
 		
 		if(m.contains("mod") || m.contains("Mod") || m.contains("mods") || m.contains("Mods"))
 		{
 			message.addReaction("🏳️‍🌈").queue();
+		}
+		
+		if(m.contains("sus") || m.contains("Sus") || m.contains("amogus") || m.contains("Amogus"))
+		{
+			message.addReaction(emote2).queue();
 		}
 	}
 }

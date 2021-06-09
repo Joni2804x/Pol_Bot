@@ -1,5 +1,7 @@
 package de.Pol_Bot.Commands;
 
+import java.awt.Color;
+
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Activity.Emoji;
 import net.dv8tion.jda.api.entities.Emote;
@@ -29,6 +31,7 @@ public class HelpCommand implements ServerCommand
 		
 		
 		eb.setTitle("My Commands");
+		eb.setColor(Color.GREEN);
 		eb.addField("1.","", false);
 		
 		eb.addField("Other functions:", "", false);
