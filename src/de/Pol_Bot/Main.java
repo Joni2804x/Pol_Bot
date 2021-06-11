@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
 import de.Pol_Bot.Listeners.CommandListener;
+import de.Pol_Bot.Listeners.LockdownListener;
 import de.Pol_Bot.Listeners.ReactionListener;
 import de.Pol_Bot.Listeners.WordListener;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -47,6 +48,7 @@ public class Main {
 		builder.addEventListeners(new CommandListener());
 		builder.addEventListeners(new WordListener());
 		builder.addEventListeners(new ReactionListener());
+		builder.addEventListeners(new LockdownListener());
 		
 		shardMan = builder.build();		
 		System.out.println("Bot online");
