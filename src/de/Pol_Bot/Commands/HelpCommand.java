@@ -32,7 +32,7 @@ public class HelpCommand implements ServerCommand
 		
 		eb.setTitle("My Commands");
 		eb.setColor(Color.GREEN);
-		eb.addField("1.","", false);
+		eb.addField("1.","Comming soonTM", false);
 		
 		eb.addField("Other functions:", "", false);
 		eb.addField("A.", "If a message contains the word [Nigger], I react with <:cool:825777383914864712>", false);

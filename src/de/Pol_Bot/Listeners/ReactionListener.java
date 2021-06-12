@@ -14,7 +14,7 @@ public class ReactionListener extends ListenerAdapter
 		
 		if(!event.getUser().isBot())
 		{
-			String emoji = event.getReactionEmote().getEmoji();
+			
 			Message message = HelpCommand.messagel;
 			Message message2 = StaffHelp.messagel2;
 			String ID = HelpCommand.ID;
@@ -24,6 +24,8 @@ public class ReactionListener extends ListenerAdapter
 			
 			if(event.getMessageId().equals(ID))
 			{
+				String emoji = event.getReactionEmote().getEmoji();
+				
 				if(emoji.equals("🗑️") && event.getUser().equals(user))
 				{
 					message.delete().queue();
@@ -31,7 +33,9 @@ public class ReactionListener extends ListenerAdapter
 			}
 			else if(event.getMessageId().equals(ID2))
 			{
-				if(event.getUser().equals(user2))
+				String emoji = event.getReactionEmote().getEmoji();
+				
+				if(emoji.equals("🗑️") && event.getUser().equals(user2))
 				 {
 					message2.delete().queue();
 				 }

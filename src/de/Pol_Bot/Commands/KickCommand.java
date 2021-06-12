@@ -52,8 +52,7 @@ public class KickCommand implements ServerCommand
 				eb.setColor(Color.ORANGE);
 				eb.addField("Reason:", String.join(" ", Arrays.copyOfRange(args, 2, args.length - 0)), false);
 				
-					user.openPrivateChannel().complete().sendMessage(
-					eb.build()).complete();
+					user.openPrivateChannel().complete().sendMessage(eb.build()).complete();
 					
 				eb2.setTitle("A user has been kicked!");
 				eb2.setColor(Color.ORANGE);

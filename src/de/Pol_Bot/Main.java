@@ -37,13 +37,14 @@ public class Main {
 		
 		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("");
 		
-		builder.setActivity(Activity.playing("Shut mouth"));
+		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
 		
 		this.cmdMan = new CommandManager();
 		
 		builder.enableIntents(GatewayIntent.GUILD_MESSAGE_REACTIONS);
 		builder.enableIntents(GatewayIntent.GUILD_MESSAGES);
+		builder.enableIntents(GatewayIntent.GUILD_MEMBERS);
 		
 		builder.addEventListeners(new CommandListener());
 		builder.addEventListeners(new WordListener());
