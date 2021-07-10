@@ -4,6 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import de.Pol_Bot.Commands.BanCommand;
 import de.Pol_Bot.Commands.ClearCommand;
+import de.Pol_Bot.Commands.FFmodeCommand;
 import de.Pol_Bot.Commands.HelpCommand;
 import de.Pol_Bot.Commands.KickCommand;
 import de.Pol_Bot.Commands.LockdownCommand;
@@ -29,6 +30,9 @@ public class CommandManager
 		this.commands.put("kick", new KickCommand());
 		this.commands.put("clear", new ClearCommand());
 		this.commands.put("lockdown", new LockdownCommand());
+		this.commands.put("ffmodeon", new FFmodeCommand());
+		this.commands.put("ffmodeoff", new FFmodeCommand());
+		this.commands.put("ffmodestatus", new FFmodeCommand());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann
