@@ -1,5 +1,7 @@
 package de.Pol_Bot.Listeners;
 
+import java.util.Random;
+
 import net.dv8tion.jda.api.entities.Emote;
 import net.dv8tion.jda.api.entities.Invite.Channel;
 import net.dv8tion.jda.api.entities.Member;
@@ -48,6 +50,16 @@ public class WordListener extends ListenerAdapter
 			if(!user.isBot())
 			{
 			event.getChannel().sendMessage("The Poopenfarten").queue();
+			}
+		}
+		
+		if(event.getMessage().getContentRaw().contains("<@848855668538867712>"))
+		{
+			int i = new Random().nextInt(11);
+			
+			if(i == 1)
+			{
+				channel.sendMessage("https://tenor.com/view/ping-who-pinged-me-disturbed-gif-14162073").queue();
 			}
 		}
 		
