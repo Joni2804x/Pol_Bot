@@ -12,7 +12,8 @@ import net.dv8tion.jda.api.entities.User;
 
 public class HelpCommand implements ServerCommand
 {
-
+	
+	//pulic static damit die Nachricht in der Klasse ReactionListener gelöscht werden kann
 	public static Message messagel;
 	public static String ID;
 	public static Emote emote;
@@ -21,6 +22,7 @@ public class HelpCommand implements ServerCommand
 	@Override
 	public void performCommand(Member m, TextChannel channel, Message message) 
 	{
+		//Zeigt eine Liste an Commands die von allen verwendet werden können
 		message.delete().queue();
 		EmbedBuilder eb = new EmbedBuilder();
 		
@@ -32,11 +34,14 @@ public class HelpCommand implements ServerCommand
 		
 		eb.setTitle("My Commands");
 		eb.setColor(Color.GREEN);
-		eb.addField("1.","Comming soonTM", false);
+		eb.addField("1. Info Command", "pol!info will show some informations about the bot [work in progress]", false);
+		eb.addField("2. FF mode status", "pol!ffmodestatus will show if the family friendly mode ist turned on or off", false);
+		eb.addBlankField(false);
 		
 		eb.addField("Other functions:", "", false);
 		eb.addField("A.", "If a message contains the word [Nigger], I react with <:cool:825777383914864712>", false);
-		eb.addField("B.", "If a message contains the word [Mod], I react with " + "🏳️‍🌈", false);
+		eb.addField("B.", "If a message contains the word [Mod], I react with 🏳️‍🌈", false);
+		eb.addField("C.", "I will sometimes post random shitposts, brace yourselves", false);
 		eb.addBlankField(false);
 		eb.addField("", "React with [🗑️] to delete this Message", false);
 		

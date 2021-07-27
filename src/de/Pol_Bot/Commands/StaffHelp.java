@@ -23,18 +23,22 @@ public class StaffHelp implements ServerCommand
 		Member member = message.getMember();
 		user2 = message.getAuthor();
 	
-		
-		if(member.getRoles().contains(role))
+		//Zeigt eine Liste an Commands die von Staff Mitgliedern verwendet werden kann
+		if(member.getRoles().contains(role) || m.getUser().getId().equals("371652395861671948"))
 		{
 		EmbedBuilder eb = new EmbedBuilder();
 		
 		eb.setTitle("Staff Commands:");
-		eb.setColor(Color.RED);
+		eb.setColor(Color.CYAN);
+		eb.addBlankField(false);
+		eb.setThumbnail("https://cdn.discordapp.com/attachments/848801565951131678/863433738858528784/2560px-Gay_Pride_Flag.png");
 		
-		eb.addField("1. Lockdown:", "Comming soonTM", false);
+		eb.addField("1. Lockdown:", "pol!lockdown will put the Server into lockdown. Every new User that tries to join the server will be kicked and informed about the lockdown.", false);
 		eb.addField("2. Kick:", "pol!kick [@User] [Reason], does exactly what it says", false);
 		eb.addField("3. Ban:", "pol!ban [@User] [Reason], does exactly what it says", false);
 		eb.addField("4. Clear", "pol!clear [amount of messages to be deletetd], deletes the last specified amount of messages", false);
+		eb.addField("5. Family Friendly mode", "pol!ffmodeon will activate the family friendly mode, which will delete all new messages containing no-no words. pol!modeoff will deactivate it.", false);
+		eb.addField("6. FF mode status", "pol!ffmodestatus will show if the family friendly mode ist turned on or off", false);
 		
 		Message rmessage = channel.sendMessage(eb.build()).complete();
 		ID2 = rmessage.getId();

@@ -6,6 +6,7 @@ import de.Pol_Bot.Commands.BanCommand;
 import de.Pol_Bot.Commands.ClearCommand;
 import de.Pol_Bot.Commands.FFmodeCommand;
 import de.Pol_Bot.Commands.HelpCommand;
+import de.Pol_Bot.Commands.InfoCommand;
 import de.Pol_Bot.Commands.KickCommand;
 import de.Pol_Bot.Commands.LockdownCommand;
 import de.Pol_Bot.Commands.PingCommand;
@@ -33,6 +34,7 @@ public class CommandManager
 		this.commands.put("ffmodeon", new FFmodeCommand());
 		this.commands.put("ffmodeoff", new FFmodeCommand());
 		this.commands.put("ffmodestatus", new FFmodeCommand());
+		this.commands.put("info", new InfoCommand());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann

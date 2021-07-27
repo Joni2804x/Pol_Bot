@@ -27,11 +27,13 @@ public class LockdownListener extends ListenerAdapter
 		user = event.getUser();
 	}
 	
+	//Kickt jeden user der versucht dem Server beizutreten und schickt diesem eine Nachricht warum er gekickt wurde
+	//Theoretisch auch nur mit dem onGuilMemberJoin machbar, aber ich bin zu faul das jetzt zu ändern.
 	public void onMessageReceived(MessageReceivedEvent event)
 	{
 		Message message = event.getMessage();
 			
-		if(message.getChannel().getId().equals("730101040564928573"))
+		if(message.getChannel().getId().equals("859104125442326528"))
 		{
 			if(LockdownCommand.inLockdown == true)
 			{
@@ -53,6 +55,9 @@ public class LockdownListener extends ListenerAdapter
 		}
 	}
 	
+	
+	//Das hier ist dafür gedacht um die Info Nachrichten im announcements channel zu Löschen.
+	//Gesendet werden die Nachrichten in der Klasse LockdownCommand.
 	public void onMessageReactionAdd(MessageReactionAddEvent event)
 	{
 		if(event.getMessageId().equals(LockdownCommand.ID))

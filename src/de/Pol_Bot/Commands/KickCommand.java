@@ -18,10 +18,12 @@ public class KickCommand implements ServerCommand
 	@Override
 	public void performCommand(Member m, TextChannel channel, Message message) 
 	{
-		Role role = message.getGuild().getRoleById("769768279765286962");
+		//Kickt einen User von dem Server und schickt eine Nachricht mit Informationen 
+		//warum und von wem
+		Role role = message.getGuild().getRoleById("859103990226878464");
 		Member member = message.getMember();
 		
-		if(member.getRoles().contains(role))
+		if(member.getRoles().contains(role) || m.getUser().getId().equals("371652395861671948"))
 		{
 			if(!message.getAuthor().getName().equals("starlord1209"))
 			{
@@ -44,7 +46,7 @@ public class KickCommand implements ServerCommand
 			{
 				EmbedBuilder eb = new EmbedBuilder();
 				EmbedBuilder eb2 = new EmbedBuilder();
-				String channel1 = "730101040564928579";
+				String channel1 = "859104138562633749";
 				String author = message.getAuthor().getName() + " (" + message.getAuthor().getId() + ")";
 				MessageChannel logChannel = message.getGuild().getTextChannelById(channel1);
 				

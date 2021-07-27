@@ -22,6 +22,7 @@ public class ReactionListener extends ListenerAdapter
 			User user = HelpCommand.user;
 			User user2 = StaffHelp.user2;
 			
+			//Regelt das Löschen der beiden Hilfe Nachrichten wenn mit dem Mülltonnen Emoji reagiert wird
 			if(event.getMessageId().equals(ID))
 			{
 				String emoji = event.getReactionEmote().getEmoji();

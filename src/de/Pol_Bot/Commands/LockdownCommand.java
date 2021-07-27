@@ -1,6 +1,7 @@
 package de.Pol_Bot.Commands;
 
 import java.awt.Color;
+import java.util.concurrent.TimeUnit;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -21,23 +22,24 @@ public class LockdownCommand implements ServerCommand
 	public static Message r3message;
 	public static User author;
 	
+
 	@Override
 	public void performCommand(Member m, TextChannel channel, Message message) 
 	{
 		
-		if(m.hasPermission(Permission.ADMINISTRATOR) || m.getUser().getName().equals("Joni"))
+		if(m.hasPermission(Permission.ADMINISTRATOR) || m.getUser().getId().equals("371652395861671948"))
 		{
+		//Das hier Aktiviert den Lockdown
 		inLockdown = true;
 		
 		author = m.getUser();
-		
-		Member disboard = message.getGuild().getMemberById("302050872383242240");
-		
-		
-		TextChannel channelA = message.getGuild().getTextChannelById("834567243038851112");
+			
+		TextChannel channelA = message.getGuild().getTextChannelById("859104132925095946");
 		
 		EmbedBuilder eb2 = new EmbedBuilder();
 		
+		//Schickt eine nachricht in den announcements channel mit dem Hinweis, dass
+		//der Server sich jetzt im Lockdown befindet und pingt @everyone
 		eb2.setColor(Color.red);
 		eb2.setTitle("The Server is currently in Lockdown!");
 		eb2.addField("What does this mean?", "Due to a problem that has overwhelmed the staff Team,"
@@ -49,6 +51,8 @@ public class LockdownCommand implements ServerCommand
 		
 		EmbedBuilder eb = new EmbedBuilder();
 		
+		//Schickt eine Nachricht in den Channel in dem der Befehl für den Lockdown eingegeben wurde 
+		//mit welcher man den Lockdown durch das reagieren mit dem richtigen Emoji
 		eb.setTitle("The server is now in Lockdown!");
 		eb.setColor(Color.red);
 		eb.addField("", "to end the Lockdown, react to this message with 🛑", false);
@@ -62,7 +66,9 @@ public class LockdownCommand implements ServerCommand
 	}
 		else
 		{
-			channel.sendMessage("Insufficient right's to use this Command!").queue();
+			Message rMessage = channel.sendMessage("Insufficient right's to use this Command!").complete();
+			rMessage.delete().queueAfter(15, TimeUnit.SECONDS);
 		}
+		
 	}
 }

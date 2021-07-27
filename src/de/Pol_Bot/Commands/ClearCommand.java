@@ -19,7 +19,7 @@ public class ClearCommand implements ServerCommand
 		Role role = message.getGuild().getRoleById("769768279765286962");
 		Member member = message.getMember();
 		
-		if(member.getRoles().contains(role))
+		if(member.getRoles().contains(role) || m.getUser().getId().equals("371652395861671948"))
 		{
 		String[] args =  message.getContentDisplay().split(" ");
 		

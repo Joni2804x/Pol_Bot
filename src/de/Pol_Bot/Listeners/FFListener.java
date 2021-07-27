@@ -1,7 +1,5 @@
 package de.Pol_Bot.Listeners;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import de.Pol_Bot.Commands.FFmodeCommand;
@@ -25,8 +23,51 @@ public class FFListener extends ListenerAdapter
 			String oMessage = message.getContentDisplay();
 			String sMessage = oMessage.toLowerCase();
 			
+			//Eine Liste an Wörtern die solange der Family Friendly mode aktiviert ist gelöscht werden soll
+			//wenn sie in einer Nachricht gefunden werden
+			if(sMessage.contains("nigger"))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
+
+			if(sMessage.contains("nigga"))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
+
+			if(sMessage.contains("faggot"))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
+
+			if(sMessage.contains("kike"))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
+
+			if(sMessage.contains("sandnigger"))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
 			
-			if(sMessage.equalsIgnoreCase("testword") || sMessage.contains(" testword") || sMessage.contains("testword ") || sMessage.contains(" testword "))
+			if(sMessage.equalsIgnoreCase("fag") || sMessage.contains(" fag") || sMessage.contains("fag ") || sMessage.contains(" fag "))
+			{
+				message.delete().queue();
+				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
+				dMessage.delete().queueAfter(15, TimeUnit.SECONDS);
+			}
+			
+			if(sMessage.equalsIgnoreCase("spic") || sMessage.contains(" spic") || sMessage.contains("spic ") || sMessage.contains(" spic "))
 			{
 				message.delete().queue();
 				Message dMessage = channel.sendMessage("No bad words " + "<@" + author.getId() + ">" + "!").complete();
