@@ -42,10 +42,10 @@ public class PolderListener extends ListenerAdapter
 					int r = new Random().nextInt(messages.size());
 					event.getChannel().sendMessage(messages.get(r).getContentRaw()).queue();
 				}
-				else
-				{
-					System.out.println("i != 1");
-				}
+				//else
+				//{
+					//System.out.println("i != 1");
+				//}
 			}
 			else
 			{

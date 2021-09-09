@@ -4,6 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import de.Pol_Bot.Commands.BanCommand;
 import de.Pol_Bot.Commands.ClearCommand;
+import de.Pol_Bot.Commands.ElectionCommand;
 import de.Pol_Bot.Commands.FFmodeCommand;
 import de.Pol_Bot.Commands.HelpCommand;
 import de.Pol_Bot.Commands.InfoCommand;
@@ -35,6 +36,7 @@ public class CommandManager
 		this.commands.put("ffmodeoff", new FFmodeCommand());
 		this.commands.put("ffmodestatus", new FFmodeCommand());
 		this.commands.put("info", new InfoCommand());
+		this.commands.put("election", new ElectionCommand());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann

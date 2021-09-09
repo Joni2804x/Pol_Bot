@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import de.Pol_Bot.Commands.ElectionCommand;
 import de.Pol_Bot.Listeners.CommandListener;
 import de.Pol_Bot.Listeners.FFListener;
 import de.Pol_Bot.Listeners.LockdownListener;
@@ -41,6 +42,7 @@ public class Main {
 		
 		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
+		builder.setAutoReconnect(true);
 		
 		this.cmdMan = new CommandManager();
 		
@@ -54,6 +56,7 @@ public class Main {
 		builder.addEventListeners(new LockdownListener());
 		builder.addEventListeners(new FFListener());
 		builder.addEventListeners(new PolderListener());
+		builder.addEventListeners(new ElectionCommand());
 		
 		shardMan = builder.build();		
 		System.out.println("Bot online");

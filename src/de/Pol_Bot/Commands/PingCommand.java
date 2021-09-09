@@ -17,8 +17,9 @@ public class PingCommand implements ServerCommand
 		Member member = message.getMember();
 		User user = message.getAuthor();
 		
-		channel.sendMessage("Debug yourself you stupid moron").queue();
+		Message rmessage = channel.sendMessage("Debug yourself you stupid moron").complete();
 		
+		rmessage.addReaction("2" + "⃣").queue();
 		
 		
 	}

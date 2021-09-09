@@ -16,13 +16,15 @@ public class WordListener extends ListenerAdapter
 {
 	public void onMessageReceived(MessageReceivedEvent event)
 	{
+		Member PolBotM = event.getGuild().getMemberById("848855668538867712");
+		User PolBot = PolBotM.getUser();
 		Member member = event.getMember();
 		User user = event.getAuthor();
 		TextChannel channel = event.getTextChannel();
 		Message message = event.getMessage();
 		String m = message.getContentDisplay().toLowerCase();
-		Emote emote1 = message.getGuild().getEmoteById("868489497795498016");
-		Emote emote2 = message.getGuild().getEmoteById("868489606612545576");
+		Emote emote1 = message.getGuild().getEmoteById("866814975884132372");
+		Emote emote2 = message.getGuild().getEmoteById("867230210499280916");
 
 		//schaut nach verschieden Wörtern und reagiert dementsprechend auf diese
 		if(m.contains("nigger"))
@@ -53,15 +55,11 @@ public class WordListener extends ListenerAdapter
 			}
 		}
 		
-		if(event.getMessage().getContentRaw().contains("<@848855668538867712>"))
+		if(event.getMessage().getMentionedUsers().contains(PolBot))
 		{
-			int i = new Random().nextInt(11);
-			
-			if(i == 1)
-			{
-				channel.sendMessage("https://tenor.com/view/ping-who-pinged-me-disturbed-gif-14162073").queue();
-			}
+				channel.sendMessage("https://tenor.com/view/ping-who-pinged-me-disturbed-gif-14162073").queue();		
 		}
+
 		
 	}
 
