@@ -55,10 +55,10 @@ public class WordListener extends ListenerAdapter
 			}
 		}
 		
-		if(event.getMessage().getMentionedUsers().contains(PolBot))
-		{
-				channel.sendMessage("https://tenor.com/view/ping-who-pinged-me-disturbed-gif-14162073").queue();		
-		}
+		//if(event.getMessage().getMentionedUsers().contains(PolBot))
+		//{
+		//	channel.sendMessage("https://tenor.com/view/ping-who-pinged-me-disturbed-gif-14162073").queue();		
+		//}
 
 		
 	}
