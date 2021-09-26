@@ -19,7 +19,7 @@ public class PingCommand implements ServerCommand
 		
 		Message rmessage = channel.sendMessage("Debug yourself you stupid moron").complete();
 		
-		rmessage.addReaction("2" + "⃣").queue();
+		//rmessage.addReaction("2" + "⃣").queue();
 		
 		
 	}

@@ -163,7 +163,7 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 		}
 		else
 		{
-			return;
+			
 		}
 	}
 }
