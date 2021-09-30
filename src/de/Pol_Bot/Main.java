@@ -10,6 +10,7 @@ import de.Pol_Bot.Listeners.FFListener;
 import de.Pol_Bot.Listeners.LockdownListener;
 import de.Pol_Bot.Listeners.PolderListener;
 import de.Pol_Bot.Listeners.ReactionListener;
+import de.Pol_Bot.Listeners.ShitPostListener;
 import de.Pol_Bot.Listeners.WordListener;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -38,11 +39,12 @@ public class Main {
 	{
 		INSTANCE = this;
 		
-		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("");
+		DefaultShardManagerBuilder builder =
+				DefaultShardManagerBuilder.createDefault
+				("");
 		
 		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
-		builder.setAutoReconnect(true);
 		
 		this.cmdMan = new CommandManager();
 		
@@ -57,6 +59,8 @@ public class Main {
 		builder.addEventListeners(new FFListener());
 		builder.addEventListeners(new PolderListener());
 		builder.addEventListeners(new ElectionCommand());
+		builder.addEventListeners(new ShitPostListener());
+
 		
 		shardMan = builder.build();		
 		System.out.println("Bot online");
