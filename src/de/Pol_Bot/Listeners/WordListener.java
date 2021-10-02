@@ -17,7 +17,7 @@ public class WordListener extends ListenerAdapter
 	public void onMessageReceived(MessageReceivedEvent event)
 	{
 		Member PolBotM = event.getGuild().getMemberById("848855668538867712");
-		User PolBot = PolBotM.getUser();
+		//User PolBot = PolBotM.getUser();
 		Member member = event.getMember();
 		User user = event.getAuthor();
 		TextChannel channel = event.getTextChannel();
@@ -54,6 +54,15 @@ public class WordListener extends ListenerAdapter
 			event.getChannel().sendMessage("The Poopenfarten").queue();
 			}
 		}
+		
+		if(m.contains("ass") || m.contains("asses"))
+		{
+			if(!user.isBot())
+			{
+			event.getChannel().sendMessage("Ass ? I answer").queue();
+			}
+		}
+			
 		
 		//if(event.getMessage().getMentionedUsers().contains(PolBot))
 		//{

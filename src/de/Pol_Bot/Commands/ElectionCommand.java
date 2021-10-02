@@ -19,7 +19,8 @@ import net.dv8tion.jda.api.requests.RestAction;
 
 public class ElectionCommand extends ListenerAdapter implements ServerCommand
 {
-
+	//Soll Wahlen für polsim starten, obwohl das auch schon tot ist
+	
 	static Message rmessage;
 	static Message emessage;
 	static User author;
@@ -34,6 +35,7 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 		author = message.getAuthor();
 		Role role = message.getGuild().getRoleById("859103990226878464");
 		
+		//Die Wahl kann nur von Server staff und von mir gestartet werden
 		if(m.getRoles().contains(role) || m.getUser().getId().equals("371652395861671948"))
 		{
 		rmessage = message;
@@ -45,6 +47,7 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 		argsLength = args.length;
 		int i = 1;
 		
+		//baut bis zu 10 Feldern und 10 wahlreaktionen 
 		if(args.length > 1 && args.length  < 12)
 		{
 			EmbedBuilder eb = new EmbedBuilder();
@@ -76,6 +79,7 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 			message.delete().queue();
 		}
 		
+		//wenn man zu viele Optionen für die Wahl hat kommt das
 		else if(args.length > 12)
 		{
 			Message pmessage = channel.sendMessage("Too many arguments!").complete();
@@ -89,10 +93,14 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 		
 	}
 
-	
+	//dafür da, dass wenn mit dem Stopschild emoji reagiert wird, hört die wahl auf und die
+	//Ergebnisse werden in eine Nachricht gepackt und öffentlich losgeschickt
 	public void onMessageReactionAdd(MessageReactionAddEvent event)
 	{
-		if(event.getMessageId().equals(emessage.getId()))
+		if(!emessage.getContentDisplay().isEmpty())
+		{
+		String idieh = emessage.getId();
+		if(event.getMessageId().equals(idieh))
 		{
 			if(event.getReactionEmote().getEmoji().equals("🛑"))
 			{
@@ -165,5 +173,6 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 		{
 			return;
 		}
+	}
 	}
 }

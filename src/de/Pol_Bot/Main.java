@@ -39,12 +39,11 @@ public class Main {
 	{
 		INSTANCE = this;
 		
-		DefaultShardManagerBuilder builder =
-				DefaultShardManagerBuilder.createDefault
-				("");
+		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("");
 		
 		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
+		builder.setAutoReconnect(true);
 		
 		this.cmdMan = new CommandManager();
 		
@@ -60,7 +59,6 @@ public class Main {
 		builder.addEventListeners(new PolderListener());
 		builder.addEventListeners(new ElectionCommand());
 		builder.addEventListeners(new ShitPostListener());
-
 		
 		shardMan = builder.build();		
 		System.out.println("Bot online");

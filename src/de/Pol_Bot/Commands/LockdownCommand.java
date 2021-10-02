@@ -29,7 +29,7 @@ public class LockdownCommand implements ServerCommand
 		
 		if(m.hasPermission(Permission.ADMINISTRATOR) || m.getUser().getId().equals("371652395861671948"))
 		{
-		//Das hier Aktiviert den Lockdown
+		//Dieser boolean hier Aktiviert den Lockdown
 		inLockdown = true;
 		
 		author = m.getUser();
