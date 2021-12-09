@@ -36,12 +36,15 @@ public class HelpCommand implements ServerCommand
 		eb.setColor(Color.GREEN);
 		eb.addField("1. Info Command", "pol!info will show some informations about the bot [work in progress]", false);
 		eb.addField("2. FF mode status", "pol!ffmodestatus will show if the family friendly mode ist turned on or off", false);
+		eb.addField("3. Suggestions", "pol!suggest [your suggestion here] will send me a suggestion you have for the bot", false);
 		eb.addBlankField(false);
 		
 		eb.addField("Other functions:", "", false);
 		eb.addField("A.", "If a message contains the word [Nigger], I react with <:cool:825777383914864712>", false);
 		eb.addField("B.", "If a message contains the word [Mod], I react with 🏳️‍🌈", false);
 		eb.addField("C.", "I will sometimes post random shitposts, brace yourselves", false);
+		eb.addField("D.", "If I get pinged, I will respond", false);
+		
 		eb.addBlankField(false);
 		eb.addField("", "React with [🗑️] to delete this Message", false);
 		

@@ -23,8 +23,8 @@ public class InfoCommand implements ServerCommand
 		eb.setColor(Color.CYAN);
 		eb.setThumbnail(guild.getJDA().getSelfUser().getAvatarUrl());
 		eb.addField("Bot creator:", "Joni#4291", false);
-		eb.addField("Bot version:", "Version 1.1 (rework)", false);
-		eb.addField("Last update:", "07.24.2021", false);
+		eb.addField("Bot version:", "Version 1.3.1", false);
+		eb.addField("Last update:", "10.30.2021", false);
 		
 		Message eMessage = channel.sendMessage(eb.build()).complete();
 		eMessage.delete().queueAfter(15, TimeUnit.SECONDS);

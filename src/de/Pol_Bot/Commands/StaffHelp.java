@@ -39,6 +39,7 @@ public class StaffHelp implements ServerCommand
 		eb.addField("4. Clear", "pol!clear [amount of messages to be deletetd], deletes the last specified amount of messages", false);
 		eb.addField("5. Family Friendly mode", "pol!ffmodeon will activate the family friendly mode, which will delete all new messages containing no-no words. pol!modeoff will deactivate it.", false);
 		eb.addField("6. FF mode status", "pol!ffmodestatus will show if the family friendly mode ist turned on or off", false);
+		eb.addField("7. Talking though Pol Bot", "pol!talk [insert Channel ID here] [insert message here], send your Message into the specified Channel through Pol Bot", false);
 		
 		Message rmessage = channel.sendMessage(eb.build()).complete();
 		ID2 = rmessage.getId();

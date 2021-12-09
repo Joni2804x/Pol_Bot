@@ -5,8 +5,10 @@ import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 
 import de.Pol_Bot.Commands.ElectionCommand;
+import de.Pol_Bot.Commands.SuggestionCommand;
 import de.Pol_Bot.Listeners.CommandListener;
 import de.Pol_Bot.Listeners.FFListener;
+import de.Pol_Bot.Listeners.FuckEm;
 import de.Pol_Bot.Listeners.LockdownListener;
 import de.Pol_Bot.Listeners.PolderListener;
 import de.Pol_Bot.Listeners.ReactionListener;
@@ -59,6 +61,8 @@ public class Main {
 		builder.addEventListeners(new PolderListener());
 		builder.addEventListeners(new ElectionCommand());
 		builder.addEventListeners(new ShitPostListener());
+		builder.addEventListeners(new SuggestionCommand());
+		builder.addEventListeners(new FuckEm());
 		
 		shardMan = builder.build();		
 		System.out.println("Bot online");

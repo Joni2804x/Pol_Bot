@@ -97,10 +97,7 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 	//Ergebnisse werden in eine Nachricht gepackt und öffentlich losgeschickt
 	public void onMessageReactionAdd(MessageReactionAddEvent event)
 	{
-		if(!emessage.getContentDisplay().isEmpty())
-		{
-		String idieh = emessage.getId();
-		if(event.getMessageId().equals(idieh))
+		if(event.getReactionEmote().isEmoji())
 		{
 			if(event.getReactionEmote().getEmoji().equals("🛑"))
 			{
@@ -167,12 +164,14 @@ public class ElectionCommand extends ListenerAdapter implements ServerCommand
 					event.getMember().getUser().openPrivateChannel().complete().sendMessage("You didn't start the elction so you can't end it!").complete();
 					}
 				}
-			}
+			
 		}
 		else
 		{
-			return;
+			
 		}
 	}
-	}
 }
+}
+	
+

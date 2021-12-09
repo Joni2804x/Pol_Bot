@@ -19,7 +19,7 @@ public class CommandListener extends ListenerAdapter
 		{
 			TextChannel channel = event.getTextChannel();
 		
-			if(message.startsWith("bol!")) 
+			if(message.startsWith("pol!")) 
 			{
 				String[] args = message.substring(4).split(" ");
 

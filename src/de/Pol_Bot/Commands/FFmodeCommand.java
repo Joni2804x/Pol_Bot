@@ -29,11 +29,13 @@ public class FFmodeCommand implements ServerCommand
 				{
 					FFmode = true;
 					message.addReaction("✅").queue();
+					message.delete().queueAfter(15, TimeUnit.SECONDS);
 				}
 				else if(args[0].equalsIgnoreCase("off"))
 				{
 					FFmode = false;
 					message.addReaction("✅").queue();
+					message.delete().queueAfter(15, TimeUnit.SECONDS);
 				}
 			
 			}

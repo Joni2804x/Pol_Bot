@@ -1,11 +1,14 @@
 package de.Pol_Bot.Listeners;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageHistory;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -25,6 +28,8 @@ public class ShitPostListener extends ListenerAdapter
 	
 	public void onMessageReceived(MessageReceivedEvent event)
 	{
+		Role role = event.getMessage().getGuild().getRoleById("859103990226878464");
+		
 		m = new Random().nextInt(20) + 1;
 		//smessage = "";
 		
@@ -42,26 +47,31 @@ public class ShitPostListener extends ListenerAdapter
 					MessageHistory mHistory = channel.getHistory();
 					RestAction<List<Message>> rawMessages = mHistory.retrievePast(100);
 				
-					List<Message> messages = rawMessages.complete();
+					List<Message> UhrMessages = rawMessages.complete();
 					
-					int j = 0;
+					//int j = 0;
 					
 					//Das hier ist dafür da alle Videos, Bilder, und gifs rauszuschmeißen weil
 					//das den channel sehr schnell zuspammt
- 					while(j < messages.size())
-					{
-						Message tmessage = messages.get(j);
-						
-						if(tmessage.getContentDisplay().contains("https://"))
-							{
-								messages.remove(j);
-							}
-						j++;
-					}
-				
-					String smessage = " ";
-				
-					ShitPost(messages, channel, smessage);
+					ArrayList<Message> messages = new ArrayList<>(UhrMessages);
+					
+			          for(Message tmessage : UhrMessages)
+	                    {
+	                        String f = tmessage.getContentRaw();
+	                        
+	                        if(f.contains("https")) 
+	                        {
+	                             messages.remove(tmessage);
+	                        }
+	                        else if(f.contains("@everyone") || f.contains("@here")) 
+	                        {
+	                             messages.remove(tmessage);
+	                        }                   
+	                    }
+	                
+	                    String smessage = " ";
+	                
+	                    ShitPost(messages, channel, smessage);
 			
 				}
 	}
@@ -79,6 +89,8 @@ public class ShitPostListener extends ListenerAdapter
 			int i = new Random().nextInt(messages.size());
 			
 			Message message = messages.get(i);
+			
+			//System.out.println(message);
 		
 			String[] args = message.getContentRaw().split(" ");
 			

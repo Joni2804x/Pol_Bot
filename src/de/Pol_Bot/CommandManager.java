@@ -6,6 +6,7 @@ import de.Pol_Bot.Commands.BanCommand;
 import de.Pol_Bot.Commands.ClearCommand;
 import de.Pol_Bot.Commands.ElectionCommand;
 import de.Pol_Bot.Commands.FFmodeCommand;
+import de.Pol_Bot.Commands.FunnyTalk;
 import de.Pol_Bot.Commands.HelpCommand;
 import de.Pol_Bot.Commands.InfoCommand;
 import de.Pol_Bot.Commands.KickCommand;
@@ -13,6 +14,8 @@ import de.Pol_Bot.Commands.LockdownCommand;
 import de.Pol_Bot.Commands.PingCommand;
 import de.Pol_Bot.Commands.ServerCommand;
 import de.Pol_Bot.Commands.StaffHelp;
+import de.Pol_Bot.Commands.SuggestionCommand;
+import de.Pol_Bot.Commands.SuggestionSwitch;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -37,6 +40,10 @@ public class CommandManager
 		this.commands.put("ffmodestatus", new FFmodeCommand());
 		this.commands.put("info", new InfoCommand());
 		this.commands.put("election", new ElectionCommand());
+		this.commands.put("suggest", new SuggestionCommand());
+		this.commands.put("suggeston", new SuggestionSwitch());
+		this.commands.put("suggestoff", new SuggestionSwitch());
+		this.commands.put("talk", new FunnyTalk());
 	}
 	
 	//Auch hier muss ich mir das Nochmal anschauen, erklärung folgt dann
