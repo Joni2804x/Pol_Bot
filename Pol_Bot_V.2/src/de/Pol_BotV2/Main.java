@@ -39,7 +39,7 @@ public static Main INSTANCE;
 	{
 		INSTANCE = this;
 		
-		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("NjA5NDAxMjYzNTQwNTM1MzA4.XU2LJw.YHzZI2Dj9sKoV1ygGkdrk551Fbw");
+		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("Retardation");
 		
 		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
