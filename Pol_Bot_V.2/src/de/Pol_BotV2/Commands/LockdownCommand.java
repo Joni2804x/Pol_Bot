@@ -176,7 +176,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	
 	public long getRole(long id, String name)
 	{
-		String sql = "SELECT RoleID FROM roles WHERE GuildID = ? AND Name = ?";
+		String sql = "SELECT roleID FROM roles WHERE guildID = ? AND Name = ?";
 		
 		try
 		{

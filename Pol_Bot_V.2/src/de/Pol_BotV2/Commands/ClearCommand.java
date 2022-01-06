@@ -23,7 +23,7 @@ public class ClearCommand implements ServerCommand
 			channel.sendMessage("Number of messages not specified!").queue();
 		}
 	
-		channel.getHistory()
+		channel.getHistory();
 		
 		
 	}
