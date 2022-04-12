@@ -26,6 +26,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 {
 	//Connection conn = Main.conn;
 	static LockdownCommand lc = new LockdownCommand(); 
+	static String reason;
 	//static Guild guild;
 	
 	@Override
@@ -33,13 +34,13 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	{
 		//lc = new LockdownCommand();
 		//guild = message.getGuild();
-		Role role = m.getGuild().getRoleById(lc.getRole(message.getGuild().getIdLong(), "Staff_role"));
+		Role role = m.getGuild().getRoleById(lc.getRole(message.getGuild().getIdLong(), "server_staff"));
 		User me = m.getJDA().getUserById("371652395861671948");
 		
 		TextChannel an = m.getGuild().getTextChannelById(lc.getAnChannel(message.getGuild().getIdLong(), "announcements"));
 	
 		
-		String reason = message.getContentDisplay().substring(12);
+		reason = message.getContentDisplay().substring(12);
 		
 		if(m.getRoles().contains(role) || m.getUser().equals(me))
 		{
@@ -51,12 +52,14 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 				
 				if(!reason.isEmpty())
 				{
-					eb.addField("", reason, false);
+					reason = message.getContentDisplay().substring(12);
 				}
 				else
 				{
-					eb.addField("", "[No reason given]", false);
+					reason = "[No reason given]";
 				}
+				
+				eb.addField("", reason, false);
 				
 				eb.setColor(Color.red);
 				eb.setThumbnail(m.getUser().getAvatarUrl());
@@ -66,7 +69,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 				
 				an.sendMessage(eb.build()).complete();
 				
-				lc.insert(message.getGuild().getIdLong(), lmessage.getIdLong(), an.getIdLong() ,m.getUser().getIdLong());
+				lc.insert(message.getGuild().getIdLong(), lmessage.getIdLong(), an.getIdLong() ,m.getUser().getIdLong(), reason);
 				message.delete().complete();
 			}
 			else
@@ -86,15 +89,19 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	{
 		if(lc.lockdownStatus(event.getGuild().getIdLong()) == true)
 		{
+			String reason = lc.LockdownReason(event.getGuild().getIdLong());
+			
 			Member target = event.getMember();
 			
 			EmbedBuilder eb2 = new EmbedBuilder();
 			
 			eb2.setTitle("You have been kicked due to an ongoing Lockdown!");
-			eb2.addField("What does this mean?", "Currently there is a problem that has forced us to no accept new members. Try joining again later!", false);
+			eb2.addField("What does this mean?", "Currently there is a problem that has forced us to not accept new members. Try joining again later!", false);
+			eb2.addField("Reason: ", reason, false);
 			eb2.setColor(Color.red);
 			
 			target.getUser().openPrivateChannel().complete().sendMessage(eb2.build()).complete();
+			target.kick().complete();
 		}
 	}
 	
@@ -134,9 +141,9 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	}
 
 
-	public void insert(long guild, long messageID, long anID ,long authorID)
+	public void insert(long guild, long messageID, long anID ,long authorID, String reason)
 	{
-		String sql = "INSERT INTO activeLockdowns(Guild, Message, AnnouncementID, Author) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO activeLockdowns(Guild, Message, AnnouncementID, Author, Reason) VALUES(?,?,?,?,?)";
 		
 		try
 		{
@@ -146,6 +153,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 			p.setLong(2, messageID);
 			p.setLong(3, anID);
 			p.setLong(4, authorID);
+			p.setString(5, reason);
 			p.executeUpdate();
 		}
 		catch(SQLException e)
@@ -176,7 +184,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	
 	public long getRole(long id, String name)
 	{
-		String sql = "SELECT roleID FROM roles WHERE guildID = ? AND Name = ?";
+		String sql = "SELECT roleID FROM role WHERE guildID = ? AND Name = ?";
 		
 		try
 		{
@@ -218,7 +226,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 	
 	public long getAnChannel(long idLong, String name) 
 	{
-		String sql = "SELECT ID FROM channel WHERE Guild = ? AND Name = ?";
+		String sql = "SELECT channelID FROM channel WHERE guildID = ? AND Name = ?";
 		
 		try
 		{
@@ -228,7 +236,7 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 			p.setString(2, name);
 			ResultSet rs = p.executeQuery();
 			
-			return rs.getLong("ID");
+			return rs.getLong("channelID");
 		}
 		catch(SQLException e)
 		{
@@ -271,6 +279,26 @@ public class LockdownCommand extends ListenerAdapter implements ServerCommand
 		{
 			System.out.println(e);
 			return 0;
+		}
+	}
+	
+	public String LockdownReason(long idLong)
+	{
+		String sql = "SELECT Reason FROM activeLockdowns WHERE Guild = ?";
+		
+		try
+		{
+			PreparedStatement p = Main.conn.prepareStatement(sql);
+			
+			p.setLong(1, idLong);
+			ResultSet rs = p.executeQuery();
+			
+			return rs.getString("Reason");
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e);
+			return "An error occured while returning Lockdown Reason!";
 		}
 	}
 }

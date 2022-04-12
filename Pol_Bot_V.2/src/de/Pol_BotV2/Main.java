@@ -39,7 +39,7 @@ public static Main INSTANCE;
 	{
 		INSTANCE = this;
 		
-		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("Retardation");
+		DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("");
 		
 		builder.setActivity(Activity.playing("Use pol!Help to see my Commands"));
 		builder.setStatus(OnlineStatus.ONLINE);
@@ -94,11 +94,12 @@ public static Main INSTANCE;
 		{
 			DriverManager.registerDriver(new org.sqlite.JDBC());
 			
-			String url = "jdbc:sqlite:C:/PolBot/PolBot.db";
+			String url = "jdbc:sqlite:PolBot.db";
 			
 			Connection conn = DriverManager.getConnection(url);
 			return conn;
-		} catch (SQLException e) 
+		} 
+		catch (SQLException e) 
 		{
 			e.printStackTrace();
 			return null;
@@ -130,11 +131,6 @@ public static Main INSTANCE;
 			shardMan.restart();
 		}
 		scanner.close();
-	}
-	
-	public static boolean lockDownStatus()
-	{
-		return false;
 	}
 	
 
